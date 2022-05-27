@@ -87,16 +87,16 @@ async def get_me():
 bot_username = bot.loop.run_until_complete(get_me())
 start_msg = """Hi {user}!
 
-**I'm a channel actions bot, mainly focused on working with the new [admin approval invite links](https://t.me/telegram/153).**
+**I'm a channel actions bot, mainly focused on working with the new [Admin Approval Invite Links](https://t.me/telegram/153).**
 
 **__I can__**:
-- __Auto approve new join requests.__
+- __Auto Approve New Join Requests.__
 - __Auto Decline New Join Requests.__
 
 `Click the below button to know how to use me!`"""
 start_buttons = [
-    [Button.inline("How to use me ❓", data="helper")],
-    [Button.url("Updates", "https://t.me/BotzHub")],
+    [Button.inline("HOW TO USE ME ❓", data="helper")],
+    [Button.url("UPDATES CHANNEL", "https://t.me/FlixBots")],
 ]
 
 
@@ -125,7 +125,7 @@ async def start_in(event):
 @bot.on(events.CallbackQuery(data="helper"))
 async def helper(event):
     await event.edit(
-        '**Usage instructions.**\n\nAdd me to your channel, as administrator, with "add users" permission, and forward me a message from that chat to set me up!\n\nTo approve members who are already in waiting list, upgrade to premium for 3$ per month! Contact @xditya_bot if interested.',
+        '**Usage instructions.**\n\nAdd me to your channel, as administrator, with "add users" permission, and forward me a message from that chat to set me up!\n\nTo approve members who are already in waiting list, upgrade to premium for 3$ per month! Contact @Iggie if interested.',
         buttons=Button.inline("Main Menu 📭", data="start"),
     )
 
@@ -220,7 +220,7 @@ async def approver(event):
         dn = "disapproved :("
     await bot.send_message(
         event.user_id,
-        "Hello {}, your request to join {} has been {}\nSend /start to know more.\n\n__**Powered by @BotzHub**__".format(
+        "Hello {}, your request to join {} has been {}\nSend /start to know more.\n\n__**Powered by @FlixBots**__".format(
             who.first_name, chat_.title, dn
         ),
     )
@@ -269,6 +269,6 @@ async def broad(e):
 
 
 log.info("Started Bot - %s", bot_username)
-log.info("\n@BotzHub\n\nBy - @xditya.")
+log.info("\n@FlixBots\n\nBy - @Iggie.")
 
 bot.run_until_disconnected()
