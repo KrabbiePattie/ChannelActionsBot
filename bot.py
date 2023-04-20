@@ -206,7 +206,7 @@ async def settings(event):
 @bot.on(events.Raw(types.UpdateBotChatInviteRequester))
 async def approver(event):
     chat = event.peer.channel_id
-    chat_settings = await db.get("CHAT_SETTINGS") or "{}"
+    chat_settings = db.get("CHAT_SETTINGS") or "{}"
     chat_settings = eval(chat_settings)
     welcome_msg = eval(await db.get("WELCOME_MSG") or "{}")
     chat_welcome = (
