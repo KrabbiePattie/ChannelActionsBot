@@ -208,7 +208,7 @@ async def approver(event):
     chat = event.peer.channel_id
     chat_settings = db.get("CHAT_SETTINGS") or "{}"
     chat_settings = eval(chat_settings)
-    welcome_msg = eval(await db.get("WELCOME_MSG") or "{}")
+    welcome_msg = eval(db.get("WELCOME_MSG") or "{}")
     chat_welcome = (
         welcome_msg.get(chat)
         or "Hello {name}, your request to join {chat} has been {dn}"
