@@ -206,8 +206,14 @@ async def settings(event):
 @bot.on(events.Raw(types.UpdateBotChatInviteRequester))
 async def approver(event):
     chat = event.peer.channel_id
-    chat_settings = db.get("CHAT_SETTINGS") or "{}"
+    chat_settings = await db.get("CHAT_SETTINGS") or "{}"
     chat_settings = eval(chat_settings)
+    welcome_msg = eval(await db.get("WELCOME_MSG") or "{}")
+    chat_welcome = (
+        welcome_msg.get(chat)
+        or "Hello {name}, your request to join {chat} has been {dn}"
+    )
+    chat_welcome += "\nSend /start to know more."  # \n\n__**Powered by @Flixbots**__"
     who = await bot.get_entity(event.user_id)
     chat_ = await bot.get_entity(chat)
     dn = "approved!"
@@ -218,12 +224,17 @@ async def approver(event):
     elif chat_settings.get(str(chat)) == "Auto-Disapprove":
         appr = False
         dn = "disapproved :("
-    await bot.send_message(
-        event.user_id,
-        "Hello {}, your request to join {} has been {}\nSend /start to know more.\n\n__**Powered by @FlixBots**__".format(
-            who.first_name, chat_.title, dn
-        ),
-    )
+    with contextlib.suppress(
+        errors.rpcerrorlist.UserIsBlockedError, errors.rpcerrorlist.PeerIdInvalidError
+    ):
+        await bot.send_message(
+            event.user_id,
+            chat_welcome.format(name=who.first_name, chat=chat_.title, dn=dn),
+            buttons = [
+               [Button.url("⏩ FREE PREMIUM NETFLIX ACCOUNTS ⏪", url="https://t.me/+xQqr07Os-AdmNjY0")],
+               [Button.url("⚠ DOWNLOAD WHATSAPP SPY APP FOR FREE ⚠", url="https://t.me/+xQqr07Os-AdmNjY0")],
+            ] 
+        )   
     with contextlib.suppress(errors.rpcerrorlist.UserAlreadyParticipantError):
         await bot(
             functions.messages.HideChatJoinRequestRequest(
