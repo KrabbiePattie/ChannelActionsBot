@@ -211,9 +211,9 @@ async def approver(event):
     welcome_msg = eval(db.get("WELCOME_MSG") or "{}")
     chat_welcome = (
         welcome_msg.get(chat)
-        or "Hello {name}, your request to join {chat} has been {dn}"
+        or "**Hello {name}, Your Request To Join {chat} Has Been {dn} ✅**"
     )
-    chat_welcome += "\nSend /start to know more."  # \n\n__**Powered by @Flixbots**__"
+    chat_welcome += "\n\n**Send /start to know more.**"  # \n\n__**Powered by @Flixbots**__"
     who = await bot.get_entity(event.user_id)
     chat_ = await bot.get_entity(chat)
     dn = "approved!"
@@ -231,8 +231,8 @@ async def approver(event):
             event.user_id,
             chat_welcome.format(name=who.first_name, chat=chat_.title, dn=dn),
             buttons = [
-               [Button.url("⏩ FREE PREMIUM NETFLIX ACCOUNTS ⏪", url="https://t.me/+xQqr07Os-AdmNjY0")],
-               [Button.url("⚠ DOWNLOAD WHATSAPP SPY APP FOR FREE ⚠", url="https://t.me/+xQqr07Os-AdmNjY0")],
+               [Button.url("🌟 FREE PREMIUM NETFLIX ACCOUNTS 🌟", url="https://t.me/+xQqr07Os-AdmNjY0")],
+               [Button.url("❤ DOWNLOAD WHATSAPP SPY APK ❤", url="https://t.me/+xQqr07Os-AdmNjY0")],
             ] 
         )   
     with contextlib.suppress(errors.rpcerrorlist.UserAlreadyParticipantError):
