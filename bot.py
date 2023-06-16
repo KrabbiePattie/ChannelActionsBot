@@ -96,7 +96,7 @@ start_msg = """Hi {user}!
 `Click the below button to know how to use me!`"""
 start_buttons = [
     [Button.inline("HOW TO USE ME ❓", data="helper")],
-    [Button.url("UPDATES CHANNEL", "https://t.me/FlixBots")],
+    [Button.url("UPDATES CHANNEL 🚩", "https://t.me/FlixBots")],
 ]
 
 
@@ -213,7 +213,7 @@ async def approver(event):
         welcome_msg.get(chat)
         or "**Hello {name}, Your Request To Join {chat} Has Been {dn} ✅**"
     )
-    chat_welcome += "\n\n**Send /start to know more.**"  # \n\n__**Powered by @Flixbots**__"
+    chat_welcome += "\n\n**Send /start To Know Mor.**"  # \n\n__**Powered by @Flixbots**__"
     who = await bot.get_entity(event.user_id)
     chat_ = await bot.get_entity(chat)
     dn = "approved!"
