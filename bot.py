@@ -231,7 +231,7 @@ async def approver(event):
             event.user_id,
             chat_welcome.format(name=who.first_name, chat=chat_.title, dn=dn),
             buttons = [
-               [Button.url("SPY ANYONE'S WHATSAPP 👈", url="https://t.me/+xQqr07Os-AdmNjY0")],
+               [Button.url("SPY ANYONE'S WHATSAPP 👈", url="https://t.me/+hF8I81bdp2g1YWU0")],
                [Button.url("DOWNLOAD A-Z NETFLIX MOVIES 👈", url="https://t.me/+xQqr07Os-AdmNjY0")],
             ] 
         )   
